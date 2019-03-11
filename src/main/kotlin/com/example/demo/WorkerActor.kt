@@ -17,8 +17,8 @@ class WorkerActor : AbstractActor() {
             .build()
 
     private fun onMessage(it: Any?): Unit = when (it) {
-        is RequestCommand -> self().tell(it.Body + "1", sender())
-        is String -> sender().tell(RequestResult(it + "2"), ActorRef.noSender())
+        is RequestCommand -> self().tell("Hello ${it.Body}" , sender())
+        is String -> sender().tell(RequestResult("$it !"), ActorRef.noSender())
         else -> {}
     }
 
